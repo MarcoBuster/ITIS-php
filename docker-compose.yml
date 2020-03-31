@@ -1,0 +1,41 @@
+version: "3.1"
+
+volumes:
+  mysql_data:
+
+services:
+  webserver:
+    image: nginx:alpine
+    container_name: pagina-personale-webserver
+    working_dir: /application/public/
+    volumes:
+      - .:/application/public/
+      - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8000:80"
+    depends_on:
+      - php-fpm
+
+  php-fpm:
+    build: phpdocker/php-fpm
+    container_name: pagina-personale-php-fpm
+    working_dir: /application/public
+    environment:
+      - TZ=Europe/Rome
+    volumes:
+      - .:/application/public
+      - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.3/fpm/conf.d/99-overrides.ini
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:5.6.33
+    container_name: pagina-personale-mysql
+    working_dir: /application/public
+    volumes:
+      - mysql_data:/var/lib/mysql/
+    environment:
+      - MYSQL_ROOT_PASSWORD=ROOT
+      - MYSQL_DATABASE=DATABASE
+      - MYSQL_USER=MYSQL
+      - MYSQL_PASSWORD=MYSQL

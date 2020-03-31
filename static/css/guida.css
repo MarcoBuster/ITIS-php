@@ -1,0 +1,25 @@
+.content {
+    padding-bottom: 2cm;
+}
+.content p {
+    margin-bottom: 0;
+}
+.content h4 {
+    margin-top: 1rem;
+}
+
+.header::before {
+    content: "—";
+}
+.header {
+    padding-top: .5rem;
+}
+
+.note::before {
+    content: "Nota: ";
+    font-weight: bold;
+}
+.note {
+    margin-left: .8em;
+    padding-bottom: .4em;
+}

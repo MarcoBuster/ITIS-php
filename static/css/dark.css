@@ -1,0 +1,30 @@
+body {
+    color: white;
+    background-color: #181a1b;
+}
+
+.jumbotron {
+    background-color: #1e2022;
+}
+
+.card {
+    background-color: #181a1b;
+}
+
+.navbar {
+    background-color: #1a1c1d !important;
+}
+
+.dropdown-menu {
+    background-color: #181a1b !important;
+}
+.nav-link, .dropdown-item {
+    color: white !important;
+}
+.dropdown-item:hover, .dropdown-item:focus {
+    color: black !important;
+}
+
+tr > * {
+    color: white;
+}
